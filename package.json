@@ -1,0 +1,19 @@
+{
+  "name": "ex-container",
+  "version": "1.0.0",
+  "repository": "git@github.com:aleksandar9999a/ex-container.git",
+  "author": "alexander <aleksander9999a@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^4.4.2"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "tsc --build --clean"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ]
+}
