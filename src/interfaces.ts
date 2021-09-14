@@ -16,3 +16,8 @@ export interface ExDep extends ExDepBase {
   ctr: ObjectAny
   instance?: ObjectAny
 }
+
+export interface ExAsyncDep extends ExDepBase {
+  import: () => Promise<any>,
+  instance?: ObjectAny
+}
