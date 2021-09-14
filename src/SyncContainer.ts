@@ -8,7 +8,6 @@ export class ExSyncContainer {
     this.injectable = this.injectable.bind(this);
     this.resolve = this.resolve.bind(this);
     this.bind = this.bind.bind(this);
-    this.register = this.register.bind(this);
   }
 
   injectable (options: ExDepOptions) {
@@ -19,15 +18,11 @@ export class ExSyncContainer {
   }
 
   bind (ctr: any) {
-    const metadata = (Reflect.getMetadata('design:paramtypes', ctr.prototype) || []).map(this.register);
+    const metadata = (Reflect.getMetadata('design:paramtypes', ctr.prototype) || []).map(this.resolve);
     return ctr.bind(ctr, ...metadata);
   }
 
-  resolve (ctr: any) {
-    return this.register(ctr);
-  }
-
-  private register (ctr: ObjectAny) {
+  resolve (ctr: ObjectAny) {
     const options = Reflect.getMetadata('ex-container:options', ctr.prototype) as ExDepBase|undefined;
 
     if (!options) {
